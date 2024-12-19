@@ -1,5 +1,6 @@
 #include <iostream>
 #include "graphics/renderer.hpp"
+#include "input/input.hpp"
 #include "game.hpp"
 
 Game::Game()
@@ -8,21 +9,29 @@ Game::Game()
 }
 
 bool Game::init() {
-    if (!SDL_Init(SDL_INIT_VIDEO)) {
-        std::cerr << "SDL Init Failed..." << std::endl;
+    /**if (!SDL_Init(SDL_INIT_VIDEO)) {
+        std::cout << "SDL Init Failed..." << SDL_GetError() << std::endl;
         return false;
-    }
-
-    Renderer window("GAME", 800, 600);
-    //inputManager.init();
+    }**/
     
     isRunning = true;
     return true;
 }
 
 void Game::run() {
+    Renderer window("GAME", 800, 600);
+
+    Input inputManager;
+
     while (isRunning) {
-        //inputManager.processInput();
+        inputManager.update();
+
+        if (inputManager.isQuit()){
+            isRunning = false;
+        }
+        if (inputManager.isKeyPressed(SDL_SCANCODE_W)){
+            std::cout << "w" << std::endl;
+        }
         //player.update();
         renderer.clear();
         //map.render(renderer);
@@ -31,4 +40,6 @@ void Game::run() {
 
         SDL_Delay(16);
     }
+    renderer.cleanUp();
+    SDL_Quit();
 }
