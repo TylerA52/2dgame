@@ -9,17 +9,12 @@ Game::Game()
 }
 
 bool Game::init() {
-    /**if (!SDL_Init(SDL_INIT_VIDEO)) {
-        std::cout << "SDL Init Failed..." << SDL_GetError() << std::endl;
-        return false;
-    }**/
     
     isRunning = true;
     return true;
 }
 
 void Game::run() {
-    Renderer window("GAME", 800, 600);
 
     Input inputManager;
 
@@ -40,6 +35,7 @@ void Game::run() {
 
         SDL_Delay(16);
     }
+    
     renderer.cleanUp();
     SDL_Quit();
 }
