@@ -13,6 +13,20 @@ Renderer::Renderer(const char* title, int w, int h)
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
 
+SDL_Texture* Renderer::loadTexture(const char* filepath){
+    SDL_Texture* texture = nullptr;
+    texture = IMG_LoadTexture(renderer, filepath);
+
+    if (texture == nullptr){
+        std::cout << "Failed to load  texture: " << SDL_GetError() << std::endl;
+    }
+    return texture;
+}
+
+void Renderer::renderEntity(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect dstRect){
+    SDL_RenderCopy(renderer, texture &srcRect, &dstRect);
+}
+
 void Renderer::clear(){
     SDL_RenderClear(renderer);
 }
