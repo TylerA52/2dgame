@@ -1,3 +1,0 @@
-/home/tyler/Desktop/2dgame/build/CMakeFiles/2dgame.dir
-/home/tyler/Desktop/2dgame/build/CMakeFiles/edit_cache.dir
-/home/tyler/Desktop/2dgame/build/CMakeFiles/rebuild_cache.dir

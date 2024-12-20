@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/2dgame.dir/src/core/game.cpp.o CMakeFiles/2dgame.dir/src/graphics/renderer.cpp.o CMakeFiles/2dgame.dir/src/main.cpp.o -o 2dgame  /usr/lib/x86_64-linux-gnu/libSDL2.so 
