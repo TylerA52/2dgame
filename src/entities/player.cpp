@@ -7,22 +7,39 @@ Player::Player(SDL_Renderer* renderer, const char* texturePath)
         std::cout << "Failed to load sprite: " << SDL_GetError() << std::endl;
     }
     srcRect = {0, 64, 16, 16};
-    dstRect = {100, 100, 72, 72};
+    dstRect = {100, 100, 150, 150};
 }
 
 void Player::update(const Input& input){
-    const int playerSpeed = 10;
+    const int playerSpeed = 8;
 
     if (input.isKeyPressed(SDL_SCANCODE_W)){
+        srcRect.x = 16;
+        srcRect.y = 112;
         dstRect.y -= playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_A)){
+        
+        // Sprite changing by if statement  works but far too quickly
+        // revist after adding time mechanics in utils dir?
+
+        if (srcRect.x == 16 && srcRect.y == 80){
+            srcRect.x = 32;
+            srcRect.y = 80;
+        } else {
+        srcRect.x = 16;
+        srcRect.y = 80;
+        }
         dstRect.x -= playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_S)){
+        srcRect.x = 16;
+        srcRect.y = 64;
         dstRect.y += playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_D)){
+        srcRect.x = 16;
+        srcRect.y = 96;
         dstRect.x += playerSpeed;
     }
 }
