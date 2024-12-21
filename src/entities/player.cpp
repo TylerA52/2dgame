@@ -1,18 +1,17 @@
 #include "player.hpp"
 
 
-Player::Player(SDL_Renderer* renderer, const char* texturePath){
-    SDL_Texture* sprite = nullptr;
-    sprite = IMG_LoadTexture(renderer, texturePath);
+Player::Player(SDL_Renderer* renderer, const char* texturePath)
+    : sprite(IMG_LoadTexture(renderer, texturePath)){
     if (!sprite) {
         std::cout << "Failed to load sprite: " << SDL_GetError() << std::endl;
     }
-    srcRect = {0, 0, 16, 16};
-    dstRect = {100, 100, 16, 16};
+    srcRect = {0, 64, 16, 16};
+    dstRect = {100, 100, 72, 72};
 }
 
 void Player::update(const Input& input){
-    const int playerSpeed = 5;
+    const int playerSpeed = 10;
 
     if (input.isKeyPressed(SDL_SCANCODE_W)){
         dstRect.y -= playerSpeed;

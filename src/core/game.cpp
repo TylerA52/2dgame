@@ -10,7 +10,6 @@ Game::Game()
 }
 
 bool Game::init() {
-    
     isRunning = true;
     return true;
 }
@@ -25,10 +24,8 @@ void Game::run() {
         if (input.isQuit()){
             isRunning = false;
         }
-        input.update();
         player.update(input);
         renderer.clear();
-        //map.render(renderer);
         renderer.renderEntity(player.getSprite(), player.getSrcRect(), player.getDstRect());
         renderer.display();
 
