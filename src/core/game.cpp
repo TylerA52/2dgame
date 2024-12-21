@@ -1,5 +1,6 @@
 #include <iostream>
 #include "graphics/renderer.hpp"
+#include "entities/player.hpp"
 #include "input/input.hpp"
 #include "game.hpp"
 
@@ -15,22 +16,20 @@ bool Game::init() {
 }
 
 void Game::run() {
-
-    Input inputManager;
+    Player player(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png");
+    Input input;
 
     while (isRunning) {
-        inputManager.update();
+        input.update();
 
-        if (inputManager.isQuit()){
+        if (input.isQuit()){
             isRunning = false;
         }
-        if (inputManager.isKeyPressed(SDL_SCANCODE_W)){
-            std::cout << "w" << std::endl;
-        }
-        //player.update();
+        input.update();
+        player.update(input);
         renderer.clear();
         //map.render(renderer);
-        //player.render(renderer);
+        renderer.renderEntity(player.getSprite(), player.getSrcRect(), player.getDstRect());
         renderer.display();
 
         SDL_Delay(16);

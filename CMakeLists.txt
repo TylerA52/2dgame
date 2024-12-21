@@ -14,17 +14,16 @@ file(GLOB_RECURSE SOURCES
 
 # Find SDL2 package
 find_package(SDL2 REQUIRED)
-
+find_package(SDL2_image REQUIRED)
 # Add the src directory to the include path
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-# Add the executable
+# Include SDL2 directories
+include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
+
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Include SDL2 directories
-include_directories(${SDL2_INCLUDE_DIRS})
-
 # Link SDL2 libraries
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image)
 
 

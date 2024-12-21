@@ -1,5 +1,7 @@
 #pragma once
 #include "../graphics/renderer.hpp"
+#include "../entities/player.hpp"
+#include "../input/input.hpp"
 
 class Game {
 
@@ -9,7 +11,7 @@ public:
     void run();
 private:
     Renderer renderer;
-    //InputManager inputManager;
+    //Input input;
     //Player player;
     
     bool isRunning;

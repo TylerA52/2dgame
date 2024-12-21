@@ -24,7 +24,11 @@ SDL_Texture* Renderer::loadTexture(const char* filepath){
 }
 
 void Renderer::renderEntity(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect dstRect){
-    SDL_RenderCopy(renderer, texture &srcRect, &dstRect);
+    SDL_RenderCopy(renderer, texture, &srcRect, &dstRect);
+}
+
+SDL_Renderer* Renderer::getRenderer(){
+    return renderer;
 }
 
 void Renderer::clear(){
@@ -39,6 +43,3 @@ void Renderer::cleanUp(){
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 }
-
-
-
