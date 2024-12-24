@@ -1,4 +1,6 @@
 #include "timer.hpp"
+#include <iostream>
+#include <SDL2/SDL.h>
 
 Timer::Timer()
     : startTime(0), pausedTime(0), totalPassed(0), running(false), paused(false) {}
@@ -6,7 +8,7 @@ Timer::Timer()
 void Timer::start() {
     running = true;
     paused = false;
-    totalElapsed = 0;
+    totalPassed = 0;
     startTime = SDL_GetTicks();
 }
 
@@ -44,6 +46,6 @@ Uint32 Timer::getTime() const {
 bool Timer::isRunning() const {
     return running;
 }
-bool Time::isPaused() const {
+bool Timer::isPaused() const {
     return paused;
 }

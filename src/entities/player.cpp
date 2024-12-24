@@ -37,15 +37,17 @@ void Player::update(const Input& input){
         
         // Sprite changing by if statement  works but far too quickly
         // revist after adding time mechanics in utils dir?
-
-        if (srcRect.x == 16 && srcRect.y == 80){
-            srcRect.x = 32;
+        if (animationTimer.getTime() >= 50) {
+            if (srcRect.x == 16 && srcRect.y == 80){
+                srcRect.x = 32;
+                srcRect.y = 80;
+            } else {
+            srcRect.x = 16;
             srcRect.y = 80;
-        } else {
-        srcRect.x = 16;
-        srcRect.y = 80;
+            }
+            dstRect.x -= playerSpeed;
+            animationTimer.start();
         }
-        dstRect.x -= playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_S)){
         srcRect.x = 16;

@@ -1,7 +1,10 @@
 #include <iostream>
 #include "graphics/renderer.hpp"
+#include "graphics/textbox.hpp"
 #include "entities/player.hpp"
+#include "entities/entity.hpp"
 #include "input/input.hpp"
+#include "utils/timer.hpp"
 #include "game.hpp"
 
 Game::Game()
