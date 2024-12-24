@@ -1,5 +1,6 @@
 #pragma once
 #include "input/input.hpp"
+#include "utils/timer.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
@@ -16,4 +17,6 @@ private:
     SDL_Texture* sprite;
     SDL_Rect srcRect;
     SDL_Rect dstRect;
+    Timer animationTimer;
+    int currentFrame;
 };

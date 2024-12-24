@@ -6,6 +6,9 @@ Player::Player(SDL_Renderer* renderer, const char* texturePath)
     if (!sprite) {
         std::cout << "Failed to load sprite: " << SDL_GetError() << std::endl;
     }
+    currentFrame = 0;
+    animationTimer.start();
+
     srcRect = {0, 64, 16, 16};
     dstRect = {100, 100, 150, 150};
 }
@@ -14,6 +17,18 @@ void Player::update(const Input& input){
     const int playerSpeed = 8;
 
     if (input.isKeyPressed(SDL_SCANCODE_W)){
+
+        // once a sprite class is implemented I can go through the frames with something like this
+
+        /**if (animationTimer.getPassedTime() >= 100 {
+            currentFrame ++;
+            if (currentFrame >= sprite.getFrameCount()) {
+                currentFrame = 0;
+            }
+            sprite.setFrame(currentFrame);
+            animationTimer.start();
+        }**/
+
         srcRect.x = 16;
         srcRect.y = 112;
         dstRect.y -= playerSpeed;
