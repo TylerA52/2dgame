@@ -1,64 +1,37 @@
 #include "player.hpp"
+#include "graphics/sprite.hpp"
 
 
 Player::Player(SDL_Renderer* renderer, const char* texturePath)
-    : sprite(IMG_LoadTexture(renderer, texturePath)){
-    if (!sprite) {
-        std::cout << "Failed to load sprite: " << SDL_GetError() << std::endl;
-    }
+    : sprite(renderer, texturePath, 16, 16, 3){
     currentFrame = 0;
     animationTimer.start();
 
-    srcRect = {64, 16, 16, 16};
     dstRect = {100, 100, 72, 72};
 }
 
 void Player::update(const Input& input){
     const int playerSpeed = 5;
+    Uint32 passedTime = animationTimer.getTime();
 
     if (input.isKeyPressed(SDL_SCANCODE_W)){
-
-        // once a sprite class is implemented I can go through the frames with something like this
-
-        /**if (animationTimer.getPassedTime() >= 100 {
-            currentFrame ++;
-            if (currentFrame >= sprite.getFrameCount()) {
-                currentFrame = 0;
-            }
-            sprite.setFrame(currentFrame);
-            animationTimer.start();
-        }**/
-
-        srcRect.x = 48;
-        srcRect.y = 48;
+        sprite.setRow(0);
+        sprite.update(passedTime);
         dstRect.y -= playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_A)){
-        
-        if (animationTimer.getTime() >= 125) {
-            if (srcRect.x == 64 && srcRect.y == 16){
-                srcRect.x = 80;
-                srcRect.y = 16;
-            } else if (srcRect.x == 80 && srcRect.y == 16){
-                srcRect.x = 48;
-                srcRect.y = 16;
-            } else {
-                srcRect.x = 64;
-                srcRect.y = 16;
-            }   
-            //dstRect.x -= playerSpeed;
-            animationTimer.start();
-        }
+        sprite.setRow(1);
+        sprite.update(passedTime);
         dstRect.x -= playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_S)){
-        srcRect.x = 48;
-        srcRect.y = 0;
+        sprite.setRow(2);
+        sprite.update(passedTime);
         dstRect.y += playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_D)){
-        srcRect.x = 48;
-        srcRect.y = 32;
+        sprite.setRow(3);
+        sprite.update(passedTime);
         dstRect.x += playerSpeed;
     }
 }

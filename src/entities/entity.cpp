@@ -1,5 +1,6 @@
 #include "entity.hpp"
 
+// COPIED FROM player.cpp - WILL BE MODIFIED FOR GENERAL ENTITIES
 
 Entity::Entity(SDL_Renderer* renderer, const char* texturePath)
     : sprite(IMG_LoadTexture(renderer, texturePath)){
