@@ -9,12 +9,12 @@ Player::Player(SDL_Renderer* renderer, const char* texturePath)
     currentFrame = 0;
     animationTimer.start();
 
-    srcRect = {0, 64, 16, 16};
-    dstRect = {100, 100, 150, 150};
+    srcRect = {64, 16, 16, 16};
+    dstRect = {100, 100, 72, 72};
 }
 
 void Player::update(const Input& input){
-    const int playerSpeed = 8;
+    const int playerSpeed = 5;
 
     if (input.isKeyPressed(SDL_SCANCODE_W)){
 
@@ -29,34 +29,36 @@ void Player::update(const Input& input){
             animationTimer.start();
         }**/
 
-        srcRect.x = 16;
-        srcRect.y = 112;
+        srcRect.x = 48;
+        srcRect.y = 48;
         dstRect.y -= playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_A)){
         
-        // Sprite changing by if statement  works but far too quickly
-        // revist after adding time mechanics in utils dir?
-        if (animationTimer.getTime() >= 50) {
-            if (srcRect.x == 16 && srcRect.y == 80){
-                srcRect.x = 32;
-                srcRect.y = 80;
+        if (animationTimer.getTime() >= 125) {
+            if (srcRect.x == 64 && srcRect.y == 16){
+                srcRect.x = 80;
+                srcRect.y = 16;
+            } else if (srcRect.x == 80 && srcRect.y == 16){
+                srcRect.x = 48;
+                srcRect.y = 16;
             } else {
-            srcRect.x = 16;
-            srcRect.y = 80;
-            }
-            dstRect.x -= playerSpeed;
+                srcRect.x = 64;
+                srcRect.y = 16;
+            }   
+            //dstRect.x -= playerSpeed;
             animationTimer.start();
         }
+        dstRect.x -= playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_S)){
-        srcRect.x = 16;
-        srcRect.y = 64;
+        srcRect.x = 48;
+        srcRect.y = 0;
         dstRect.y += playerSpeed;
     }
     if (input.isKeyPressed(SDL_SCANCODE_D)){
-        srcRect.x = 16;
-        srcRect.y = 96;
+        srcRect.x = 48;
+        srcRect.y = 32;
         dstRect.x += playerSpeed;
     }
 }
