@@ -46,7 +46,7 @@ void Player::update(const Input& input){
                 srcRect.x = 64;
                 srcRect.y = 16;
             }   
-            //dstRect.x -= playerSpeed;
+            //dstRect.x -= playerSpeed; -FOR TESTING
             animationTimer.start();
         }
         dstRect.x -= playerSpeed;

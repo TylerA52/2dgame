@@ -19,6 +19,8 @@ bool Game::init() {
 
 void Game::run() {
     Player player(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png");
+    Entity entity(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png");
+
     Input input;
 
     while (isRunning) {
@@ -30,6 +32,7 @@ void Game::run() {
         player.update(input);
         renderer.clear();
         renderer.renderEntity(player.getSprite(), player.getSrcRect(), player.getDstRect());
+        renderer.renderEntity(entity.getSprite(), entity.getSrcRect(), entity.getDstRect());
         renderer.display();
 
         SDL_Delay(16);

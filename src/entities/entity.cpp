@@ -6,8 +6,8 @@ Entity::Entity(SDL_Renderer* renderer, const char* texturePath)
     if (!sprite) {
         std::cout << "Failed to load sprite: " << SDL_GetError() << std::endl;
     }
-    srcRect = {0, 64, 16, 16};
-    dstRect = {100, 100, 72, 72};
+    srcRect = {64, 16, 16, 16};
+    dstRect = {200, 200, 72, 72};
 }
 
 void Entity::update(const Input& input){
