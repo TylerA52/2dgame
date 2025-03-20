@@ -19,7 +19,7 @@ bool Game::init() {
 
 void Game::run() {
     Player player(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png");
-    Entity entity(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png");
+    Entity entity(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png", 64, 16);
 
     Input input;
 
