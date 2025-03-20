@@ -19,7 +19,8 @@ bool Game::init() {
 
 void Game::run() {
     Player player(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png");
-    Entity entity(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png", 64, 16);
+    Entity entity1(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png", 16, 64, 200, 200);
+    Entity entity2(renderer.getRenderer(), "/home/tyler/Desktop/2dgame/assets/images/characters.png", 16, 64, 300, 200);
 
     Input input;
 
@@ -32,7 +33,8 @@ void Game::run() {
         player.update(input);
         renderer.clear();
         renderer.renderEntity(player.getSprite(), player.getSrcRect(), player.getDstRect());
-        renderer.renderEntity(entity.getSprite(), entity.getSrcRect(), entity.getDstRect());
+        renderer.renderEntity(entity1.getSprite(), entity1.getSrcRect(), entity1.getDstRect());
+        renderer.renderEntity(entity2.getSprite(), entity2.getSrcRect(), entity2.getDstRect());
         renderer.display();
 
         SDL_Delay(16);

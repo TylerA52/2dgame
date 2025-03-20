@@ -10,7 +10,7 @@ Player::Player(SDL_Renderer* renderer, const char* texturePath)
     animationTimer.start();
 
     srcRect = {64, 16, 16, 16};
-    dstRect = {100, 100, 72, 72};
+    dstRect = {600, 100, 72, 72};
 }
 
 void Player::update(const Input& input){

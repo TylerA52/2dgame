@@ -1,13 +1,13 @@
 #include "entity.hpp"
 
 
-Entity::Entity(SDL_Renderer* renderer, const char* texturePath, int srcX, int srcY)
+Entity::Entity(SDL_Renderer* renderer, const char* texturePath, int srcX, int srcY, int dstX, int dstY)
     : sprite(IMG_LoadTexture(renderer, texturePath)){
     if (!sprite) {
         std::cout << "Failed to load sprite: " << SDL_GetError() << std::endl;
     }
     srcRect = {srcX, srcY, 16, 16};
-    dstRect = {200, 200, 72, 72};
+    dstRect = {dstX, dstY, 72, 72};
 }
 
 void Entity::update(const Input& input){

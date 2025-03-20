@@ -7,7 +7,7 @@
 class Entity {
     
 public:
-    Entity(SDL_Renderer* renderer, const char* texturePath, int srcX, int srcY);
+    Entity(SDL_Renderer* renderer, const char* texturePath, int srcX, int srcY, int dstX, int dstY);
     void update(const Input& input);
     SDL_Texture* getSprite();
     SDL_Rect getSrcRect();
