@@ -26,7 +26,7 @@ Tilemap::Tilemap(int mapWidth, int mapHeight, SDL_Texture* tileSet)
 
 // Add a second map
 
-void Tilemap::renderMap(RenderWindow& window) {
+void Tilemap::renderMap(Renderer& window) {
 const int tilesPerRow = 8;
 
     for (int y = 0; y < mapHeight; y++){
@@ -38,8 +38,8 @@ const int tilesPerRow = 8;
             int s_x = tileIndex % tilesPerRow;
             int s_y = tileIndex / tilesPerRow;
 
-            Entity tileEntity(tileset, s_x, s_y, x, y);
-            window.render(tileEntity);
+            Entity tileEntity(tileSet, s_x, s_y, x, y);
+            window.renderEntity(tileEntity);
         }
     }
 }
